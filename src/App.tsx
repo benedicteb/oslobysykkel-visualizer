@@ -1,8 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { fetchAvailability, fetchStations } from "./services/oslobysykkel";
 
 function App() {
+  useEffect(() => {
+    const method = async () => {
+      const stationList = await fetchAvailability();
+
+      console.log(stationList);
+    };
+
+    method();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
