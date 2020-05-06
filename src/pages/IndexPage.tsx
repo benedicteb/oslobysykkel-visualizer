@@ -20,7 +20,7 @@ const IndexPage = () => {
           <input
             style={{
               width: "500px",
-              borderRadius: "40px",
+              borderRadius: "40px 0 0 40px",
               border: "0",
               padding: "10px",
               fontSize: "22px"
@@ -33,7 +33,14 @@ const IndexPage = () => {
           />
 
           <button
-            style={{ fontSize: "22px", margin: "0 10px", borderRadius: "5px" }}
+            style={{
+              fontSize: "22px",
+              borderRadius: "0 40px 40px 0",
+              padding: "10px 20px 10px 10px",
+              backgroundColor: "#25901ead",
+              color: "white",
+              border: "0"
+            }}
           >
             Søk
           </button>
