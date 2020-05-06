@@ -1,4 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap');
+
 body {
   margin: 0;
   padding: 0;
+
+  background-color: #004580;
+  color: white;
+
+  font-family: 'Baloo Tamma 2', cursive;
+}
+
+a {
+  color: white;
 }
