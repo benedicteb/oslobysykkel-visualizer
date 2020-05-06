@@ -4,7 +4,7 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => (
   <>
     <header />
 
-    <main>{children}</main>
+    <main style={{ width: "80%", margin: "auto" }}>{children}</main>
 
     <footer />
   </>
