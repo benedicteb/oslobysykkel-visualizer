@@ -12,11 +12,11 @@ const AllStationsPage = () => {
   >(undefined);
 
   useEffect(() => {
-    fetchStations().then(stationList => {
+    fetchStations().then((stationList) => {
       setStations(stationList);
     });
 
-    fetchAvailability().then(statusList => {
+    fetchAvailability().then((statusList) => {
       setStationStatuses(statusList);
     });
   }, []);
@@ -29,36 +29,45 @@ const AllStationsPage = () => {
         <p>Laster...</p>
       ) : (
         <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
-          {stations.data.stations.sort(byStationName).map(station => (
-            <li
-              key={station.station_id}
-              style={{
-                backgroundColor: "#153c5f",
-                margin: "0 0 10px 0",
-                borderRadius: "10px",
-                padding: "10px",
-
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between"
-              }}
-            >
-              <p
+          {stations.data.stations.sort(byStationName).map((station) => (
+            <a href={`/station/${station.station_id}`}>
+              <li
+                key={station.station_id}
                 style={{
-                  display: "inline",
-                  margin: 0,
-                  padding: 0,
-                  fontWeight: "bold",
-                  fontSize: "16px"
+                  backgroundColor: "#153c5f",
+                  margin: "0 0 10px 0",
+                  borderRadius: "10px",
+                  padding: "10px",
+
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
                 }}
               >
-                {station.name}
-              </p>
+                <p
+                  style={{
+                    display: "inline",
+                    margin: 0,
+                    padding: 0,
+                    fontWeight: "bold",
+                    fontSize: "16px",
+                  }}
+                >
+                  {station.name}
+                </p>
 
-              <p style={{ display: "inline", margin: 0, padding: 0 }}>
-                {station.capacity} plasser ({stationStatuses?.data.stations.find((stationStatus) => station.station_id === stationStatus.station_id)?.num_bikes_available} ledige)
-              </p>
-            </li>
+                <p style={{ display: "inline", margin: 0, padding: 0 }}>
+                  {station.capacity} plasser (
+                  {
+                    stationStatuses?.data.stations.find(
+                      (stationStatus) =>
+                        station.station_id === stationStatus.station_id
+                    )?.num_bikes_available
+                  }{" "}
+                  ledige)
+                </p>
+              </li>
+            </a>
           ))}
         </ul>
       )}
