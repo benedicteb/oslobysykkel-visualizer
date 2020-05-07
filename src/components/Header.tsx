@@ -3,17 +3,15 @@ import React from "react";
 const Header = () => (
   <div style={{ backgroundColor: "#063258" }}>
     <div
+      className={"center"}
       style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-
         width: "80%",
         margin: "auto",
+
+        padding: "10px 0",
       }}
     >
-      <h1>
+      <h1 style={{ margin: 0, padding: 0 }}>
         <a style={{ textDecoration: "none" }} href={"/"}>
           oslobysykkel-viz
         </a>
