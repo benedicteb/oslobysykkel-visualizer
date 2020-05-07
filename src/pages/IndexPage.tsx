@@ -37,6 +37,7 @@ const IndexPage = () => {
               border: "0",
               padding: "10px 20px",
               fontSize: "22px",
+              outline: "none",
             }}
             type={"text"}
             placeholder={"Arendalsgata"}
