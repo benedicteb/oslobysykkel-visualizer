@@ -65,7 +65,22 @@ const StationPage = () => {
         <p>Laster informasjon...</p>
       ) : (
         <>
-          <h1>{stationInformation?.name}</h1>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <h1>{stationInformation?.name}</h1>
+
+            {secondsSinceUpdated || -1 > 0 ? (
+              <p>Oppdatert {secondsSinceUpdated} sekunder siden</p>
+            ) : (
+              <p>Akkurat nå</p>
+            )}
+          </div>
 
           <div
             style={{
@@ -102,12 +117,6 @@ const StationPage = () => {
                 plasser
               </h3>
             </div>
-
-            {secondsSinceUpdated || -1 > 0 ? (
-              <p>Oppdatert {secondsSinceUpdated} sekunder siden</p>
-            ) : (
-              <p>Akkurat nå</p>
-            )}
           </div>
         </>
       )}
