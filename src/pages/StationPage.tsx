@@ -65,7 +65,7 @@ const StationPage = () => {
         <p>Laster informasjon...</p>
       ) : (
         <>
-          <h1 style={{ fontSize: "48px" }}>{stationInformation?.name}</h1>
+          <h1>{stationInformation?.name}</h1>
 
           <div
             style={{
