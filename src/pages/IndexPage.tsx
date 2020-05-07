@@ -23,13 +23,21 @@ const IndexPage = () => {
         style={{
           display: "flex",
           flexDirection: "column",
+          justifyContent: "center",
           alignItems: "center",
           margin: "200px 0",
         }}
       >
         <h1 style={{ margin: 0 }}>Søk etter bysykkelstativ</h1>
 
-        <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            maxWidth: "600px",
+          }}
+        >
           <input
             style={{
               width: "100%",
