@@ -35,7 +35,7 @@ const IndexPage = () => {
               width: "100%",
               borderRadius: "40px 0 0 40px",
               border: "0",
-              padding: "10px",
+              padding: "10px 20px",
               fontSize: "22px",
             }}
             type={"text"}
