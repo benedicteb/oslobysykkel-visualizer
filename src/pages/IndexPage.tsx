@@ -44,8 +44,10 @@ const IndexPage = () => {
             onChange={(event) => {
               const searchTerms = event.target.value;
 
-              if (searchTerms === "") {
-                setSearchResults([]);
+              if (!searchTerms) {
+                setSearchResults(undefined);
+
+                return;
               }
 
               const searchResults = stations?.data.stations.filter((station) =>
