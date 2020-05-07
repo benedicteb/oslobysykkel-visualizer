@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
+import { fetchStations } from "../services/oslobysykkel";
 
 const IndexPage = () => {
-  const [searchTerms, setSearchTerms] = useState("");
+  const [searchResults, setSearchResults] = useState<
+    StationInformation[] | undefined
+  >(undefined);
+
+  const [stations, setStations] = useState<StationInformationList | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    fetchStations().then((stationList) => {
+      setStations(stationList);
+    });
+  }, []);
 
   return (
     <Layout>
@@ -16,19 +29,29 @@ const IndexPage = () => {
       >
         <h1 style={{ margin: 0 }}>Søk etter bysykkelstativ</h1>
 
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
           <input
             style={{
-              width: "500px",
+              width: "100%",
               borderRadius: "40px 0 0 40px",
               border: "0",
               padding: "10px",
               fontSize: "22px",
             }}
             type={"text"}
-            value={searchTerms}
+            placeholder={"Arendalsgata"}
             onChange={(event) => {
-              setSearchTerms(event.target.value);
+              const searchTerms = event.target.value;
+
+              if (searchTerms === "") {
+                setSearchResults([]);
+              }
+
+              const searchResults = stations?.data.stations.filter((station) =>
+                station.name.toLowerCase().includes(searchTerms.toLowerCase())
+              );
+
+              setSearchResults(searchResults);
             }}
           />
 
@@ -49,6 +72,27 @@ const IndexPage = () => {
         <a style={{ margin: "10px 0" }} href={"/all-stations"}>
           Se alle stasjoner
         </a>
+
+        {searchResults !== undefined ? (
+          <div style={{ alignSelf: "flex-start" }}>
+            <h2>Resultater fra søket</h2>
+
+            {searchResults.length > 0 ? (
+              <ul>
+                {searchResults?.map((station) => (
+                  <a
+                    key={station.station_id}
+                    href={`/station/${station.station_id}`}
+                  >
+                    <li>{station.name}</li>
+                  </a>
+                ))}
+              </ul>
+            ) : (
+              <p>Fant dessverre ingen stasjoner som passet søket.</p>
+            )}
+          </div>
+        ) : null}
       </div>
     </Layout>
   );
