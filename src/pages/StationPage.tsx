@@ -5,6 +5,14 @@ import { useParams } from "react-router-dom";
 import { fetchAvailability, fetchStations } from "../services/oslobysykkel";
 import useInterval from "../hooks/useInterval";
 
+const secondsSinceLastReported = (stationStatus: StationStatus) => {
+  const now = new Date();
+  const lastReported = new Date(stationStatus.last_reported * 1000);
+  const millisSinceUpdated = now.getTime() - lastReported.getTime();
+
+  return Math.round(millisSinceUpdated / 1000.0);
+};
+
 const StationPage = () => {
   const [stationStatus, setStationStatus] = useState<StationStatus | undefined>(
     undefined
@@ -20,11 +28,16 @@ const StationPage = () => {
 
   useEffect(() => {
     fetchAvailability().then((statusList) => {
-      setStationStatus(
-        statusList.data.stations.find(
-          (station) => station.station_id === stationId
-        )
+      const stationStatus = statusList.data.stations.find(
+        (station) => station.station_id === stationId
       );
+
+      if (!stationStatus) {
+        return;
+      }
+
+      setSecondsSinceUpdated(secondsSinceLastReported(stationStatus));
+      setStationStatus(stationStatus);
     });
 
     fetchStations().then((stationList) => {
@@ -41,12 +54,7 @@ const StationPage = () => {
       return;
     }
 
-    const now = new Date();
-    const lastReported = new Date(stationStatus.last_reported * 1000);
-    const millisSinceUpdated = now.getTime() - lastReported.getTime();
-    const secondsSinceUpdated = Math.round(millisSinceUpdated / 1000.0);
-
-    setSecondsSinceUpdated(secondsSinceUpdated);
+    setSecondsSinceUpdated(secondsSinceLastReported(stationStatus));
   }, 500);
 
   const { stationId } = useParams();
@@ -95,7 +103,11 @@ const StationPage = () => {
               </h3>
             </div>
 
-            <p>Oppdatert {secondsSinceUpdated} sekunder siden</p>
+            {secondsSinceUpdated || -1 > 0 ? (
+              <p>Oppdatert {secondsSinceUpdated} sekunder siden</p>
+            ) : (
+              <p>Akkurat nå</p>
+            )}
           </div>
         </>
       )}
