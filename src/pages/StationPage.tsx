@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 import { fetchAvailability, fetchStations } from "../services/oslobysykkel";
 
 const StationPage = () => {
-  const { stationId } = useParams();
-
   const [stationStatus, setStationStatus] = useState<StationStatus | undefined>(
     undefined
   );
@@ -32,6 +30,8 @@ const StationPage = () => {
       );
     });
   }, []);
+
+  const { stationId } = useParams();
 
   return (
     <Layout>

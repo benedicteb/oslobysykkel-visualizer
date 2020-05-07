@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout";
 
 const IndexPage = () => {
@@ -11,7 +11,7 @@ const IndexPage = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          margin: "200px 0"
+          margin: "200px 0",
         }}
       >
         <h1 style={{ margin: 0 }}>Søk etter bysykkelstativ</h1>
@@ -23,11 +23,11 @@ const IndexPage = () => {
               borderRadius: "40px 0 0 40px",
               border: "0",
               padding: "10px",
-              fontSize: "22px"
+              fontSize: "22px",
             }}
             type={"text"}
             value={searchTerms}
-            onChange={event => {
+            onChange={(event) => {
               setSearchTerms(event.target.value);
             }}
           />
@@ -39,7 +39,7 @@ const IndexPage = () => {
               padding: "10px 20px 10px 10px",
               backgroundColor: "#25901ead",
               color: "white",
-              border: "0"
+              border: "0",
             }}
           >
             Søk
