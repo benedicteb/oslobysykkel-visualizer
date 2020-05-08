@@ -23,7 +23,7 @@ const AllStationsPage = () => {
 
   return (
     <Layout>
-      <h1>Alle bysykkelstativ</h1>
+      <h1 style={{ margin: "20px 0" }}>Alle bysykkelstativ</h1>
 
       {stations === undefined || stationStatuses === undefined ? (
         <p>Laster...</p>
