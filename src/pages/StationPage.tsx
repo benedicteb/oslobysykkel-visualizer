@@ -66,7 +66,9 @@ const StationPage = () => {
       ) : (
         <>
           <div className={"center"} style={{ margin: "20px 0" }}>
-            <h1>{stationInformation?.name}</h1>
+            <h1 style={{ alignSelf: "flex-start" }}>
+              {stationInformation?.name}
+            </h1>
 
             {secondsSinceUpdated || -1 > 0 ? (
               <p>Oppdatert {secondsSinceUpdated} sekunder siden</p>
