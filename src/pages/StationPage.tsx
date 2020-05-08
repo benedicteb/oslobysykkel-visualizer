@@ -4,14 +4,7 @@ import Layout from "../components/Layout";
 import { useParams } from "react-router-dom";
 import { fetchAvailability, fetchStations } from "../services/oslobysykkel";
 import useInterval from "../hooks/useInterval";
-
-const secondsSinceLastReported = (stationStatus: StationStatus) => {
-  const now = new Date();
-  const lastReported = new Date(stationStatus.last_reported * 1000);
-  const millisSinceUpdated = now.getTime() - lastReported.getTime();
-
-  return Math.round(millisSinceUpdated / 1000.0);
-};
+import secondsSinceLastReported from "../utils/secondsSinceLastReported";
 
 const StationPage = () => {
   const [stationStatus, setStationStatus] = useState<StationStatus | undefined>(
