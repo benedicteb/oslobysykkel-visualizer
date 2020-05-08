@@ -4,7 +4,10 @@ const StationListEntry: React.FC<{
   information: StationInformation;
   status: StationStatus;
 }> = ({ information, status }) => (
-  <a href={`/station/${information.station_id}`}>
+  <a
+    href={`/station/${information.station_id}`}
+    style={{ textDecoration: "none" }}
+  >
     <li
       className={"column-on-small"}
       key={information.station_id}
@@ -21,6 +24,7 @@ const StationListEntry: React.FC<{
           display: "inline",
           fontWeight: "bold",
           fontSize: "16px",
+          textDecoration: "underline",
         }}
       >
         {information.name}
