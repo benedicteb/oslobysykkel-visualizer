@@ -55,7 +55,16 @@ const StationPage = () => {
   return (
     <Layout>
       {stationStatus === undefined || stationInformation === undefined ? (
-        <p>Laster informasjon...</p>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            margin: "100px 0",
+          }}
+        >
+          <p>Laster informasjon...</p>
+        </div>
       ) : (
         <>
           <div className={"center"}>
