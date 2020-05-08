@@ -11,7 +11,7 @@ const Header = () => (
         padding: "10px 0",
       }}
     >
-      <h1 style={{ margin: 0, padding: 0 }}>
+      <h1>
         <a style={{ textDecoration: "none" }} href={"/"}>
           Ledig bysykkel?
         </a>
