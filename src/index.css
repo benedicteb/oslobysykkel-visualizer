@@ -20,7 +20,7 @@ nav a {
   font-size: 20px;
 }
 
-h1,h2,h3,p {
+* {
   padding: 0;
   margin: 0;
 }
@@ -33,9 +33,28 @@ h1,h2,h3,p {
   flex-wrap: wrap;
 }
 
+.column-on-small {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @media (max-width: 650px) {
   .center {
     flex-direction: column;
     align-items: center;
+  }
+
+  .column-on-small {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .align-start-on-small {
+    align-self: flex-start;
+  }
+
+  .align-end-on-small {
+    align-self: flex-end;
   }
 }
