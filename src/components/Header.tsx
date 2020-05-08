@@ -13,7 +13,7 @@ const Header = () => (
     >
       <h1 style={{ margin: 0, padding: 0 }}>
         <a style={{ textDecoration: "none" }} href={"/"}>
-          oslobysykkel-viz
+          Ledig bysykkel?
         </a>
       </h1>
 
