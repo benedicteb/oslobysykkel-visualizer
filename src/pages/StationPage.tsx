@@ -58,7 +58,7 @@ const StationPage = () => {
         <p>Laster informasjon...</p>
       ) : (
         <>
-          <div className={"center"} style={{ margin: "20px 0" }}>
+          <div className={"center"}>
             <h1 style={{ alignSelf: "flex-start" }}>
               {stationInformation?.name}
             </h1>
