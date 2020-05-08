@@ -12,7 +12,8 @@ const StationListEntry: React.FC<{
       className={"column-on-small"}
       key={information.station_id}
       style={{
-        backgroundColor: "#153c5f",
+        backgroundColor:
+          status.num_bikes_available > 0 ? "#155f17c7" : "#153c5f",
         margin: "0 0 10px 0",
         borderRadius: "10px",
         padding: "10px",
