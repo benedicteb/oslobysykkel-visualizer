@@ -28,7 +28,7 @@ const IndexPage = () => {
           margin: "200px 0",
         }}
       >
-        <h1 style={{ margin: 0 }}>Søk etter bysykkelstativ</h1>
+        <h1>Søk etter bysykkelstativ</h1>
 
         <div
           style={{
@@ -89,7 +89,7 @@ const IndexPage = () => {
             <h2>Resultater fra søket</h2>
 
             {searchResults.length > 0 ? (
-              <ul>
+              <ul style={{ listStyle: "none" }}>
                 {searchResults?.map((station) => (
                   <a
                     key={station.station_id}

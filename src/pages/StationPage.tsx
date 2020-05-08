@@ -123,7 +123,7 @@ const StationPage = () => {
                     display: "inline",
                   }}
                 >
-                  ledige ladere
+                  ledige låser
                 </h3>
               </div>
             </div>
