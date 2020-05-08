@@ -65,14 +65,7 @@ const StationPage = () => {
         <p>Laster informasjon...</p>
       ) : (
         <>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+          <div className={"center"} style={{ margin: "20px 0" }}>
             <h1>{stationInformation?.name}</h1>
 
             {secondsSinceUpdated || -1 > 0 ? (
@@ -87,35 +80,50 @@ const StationPage = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              padding: "60px 0",
             }}
           >
             <div>
-              <h2
-                style={{
-                  fontSize: "72px",
-                  display: "inline",
-                  margin: 0,
-                  padding: 0,
-                }}
-              >
-                {stationStatus?.num_bikes_available}
-              </h2>{" "}
-              <h3
-                style={{
-                  fontSize: "28px",
-                  display: "inline",
-                  margin: 0,
-                  padding: 0,
-                }}
-              >
-                {stationStatus?.num_bikes_available > 1
-                  ? "ledige sykler"
-                  : "ledig sykkel"}{" "}
-                av totalt{" "}
-                {stationStatus?.num_bikes_available +
-                  stationStatus?.num_docks_available}{" "}
-                plasser
-              </h3>
+              <div>
+                <h2
+                  style={{
+                    fontSize: "72px",
+                    display: "inline",
+                  }}
+                >
+                  {stationStatus?.num_bikes_available}
+                </h2>{" "}
+                <h3
+                  style={{
+                    fontSize: "28px",
+                    display: "inline",
+                  }}
+                >
+                  {stationStatus?.num_bikes_available > 1 ||
+                  stationStatus?.num_bikes_available === 0
+                    ? "ledige sykler"
+                    : "ledig sykkel"}
+                </h3>
+              </div>
+
+              <div>
+                <h2
+                  style={{
+                    fontSize: "72px",
+                    display: "inline",
+                  }}
+                >
+                  {stationStatus?.num_docks_available}
+                </h2>{" "}
+                <h3
+                  style={{
+                    fontSize: "28px",
+                    display: "inline",
+                  }}
+                >
+                  ledige ladere
+                </h3>
+              </div>
             </div>
           </div>
         </>
