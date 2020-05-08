@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { fetchStations } from "../services/oslobysykkel";
+import SearchBox from "../components/search/SearchBox";
+import SearchResults from "../components/search/SearchResults";
 
 const IndexPage = () => {
   const [searchResults, setSearchResults] = useState<
@@ -38,46 +40,7 @@ const IndexPage = () => {
             maxWidth: "600px",
           }}
         >
-          <input
-            style={{
-              width: "100%",
-              borderRadius: "40px 0 0 40px",
-              border: "0",
-              padding: "10px 20px",
-              fontSize: "22px",
-              outline: "none",
-            }}
-            type={"text"}
-            placeholder={"Arendalsgata"}
-            onChange={(event) => {
-              const searchTerms = event.target.value;
-
-              if (!searchTerms) {
-                setSearchResults(undefined);
-
-                return;
-              }
-
-              const searchResults = stations?.data.stations.filter((station) =>
-                station.name.toLowerCase().includes(searchTerms.toLowerCase())
-              );
-
-              setSearchResults(searchResults);
-            }}
-          />
-
-          <button
-            style={{
-              fontSize: "22px",
-              borderRadius: "0 40px 40px 0",
-              padding: "10px 20px 10px 10px",
-              backgroundColor: "#25901ead",
-              color: "white",
-              border: "0",
-            }}
-          >
-            Søk
-          </button>
+          <SearchBox setSearchResults={setSearchResults} stations={stations} />
         </div>
 
         <a style={{ margin: "10px 0" }} href={"/all-stations"}>
@@ -85,24 +48,7 @@ const IndexPage = () => {
         </a>
 
         {searchResults !== undefined ? (
-          <div style={{ alignSelf: "flex-start" }}>
-            <h2>Resultater fra søket</h2>
-
-            {searchResults.length > 0 ? (
-              <ul style={{ listStyle: "none" }}>
-                {searchResults?.map((station) => (
-                  <a
-                    key={station.station_id}
-                    href={`/station/${station.station_id}`}
-                  >
-                    <li>{station.name}</li>
-                  </a>
-                ))}
-              </ul>
-            ) : (
-              <p>Fant dessverre ingen stasjoner som passet søket.</p>
-            )}
-          </div>
+          <SearchResults searchResults={searchResults} />
         ) : null}
       </div>
     </Layout>
