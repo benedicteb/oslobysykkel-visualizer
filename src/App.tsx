@@ -3,6 +3,7 @@ import IndexPage from "./pages/IndexPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllStationsPage from "./pages/AllStationsPage";
 import StationPage from "./pages/StationPage";
+import MapPage from "./pages/MapPage";
 
 const App = () => (
   <Router>
@@ -12,6 +13,9 @@ const App = () => (
       </Route>
       <Route path={"/all-stations"}>
         <AllStationsPage />
+      </Route>
+      <Route path={"/station-map"}>
+        <MapPage />
       </Route>
       <Route path={"/"}>
         <IndexPage />
