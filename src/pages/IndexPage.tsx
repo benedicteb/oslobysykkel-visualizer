@@ -43,9 +43,15 @@ const IndexPage = () => {
           <SearchBox setSearchResults={setSearchResults} stations={stations} />
         </div>
 
-        <a style={{ margin: "10px 0" }} href={"/all-stations"}>
-          Se alle stasjoner
-        </a>
+        <div>
+          <a style={{ margin: "10px" }} href={"/all-stations"}>
+            Se alle stasjoner
+          </a>
+
+          <a style={{ margin: "10px" }} href={"/station-map"}>
+            Kart med stasjoner
+          </a>
+        </div>
 
         {searchResults !== undefined ? (
           <SearchResults searchResults={searchResults} />

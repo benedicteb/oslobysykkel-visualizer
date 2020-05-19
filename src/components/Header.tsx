@@ -22,6 +22,8 @@ const Header = () => (
 
         <a href={"/all-stations"}>Alle stasjoner</a>
 
+        <a href={"/station-map"}>Kart</a>
+
         <a
           href={"https://github.com/benedicteb/oslobysykkel-visualizer"}
           target={"_blank"}
