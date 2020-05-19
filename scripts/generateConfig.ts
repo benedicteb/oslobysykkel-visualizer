@@ -4,7 +4,7 @@ const config = {
   gbfsHost: "https://gbfs.urbansharing.com",
   gbfsService: "oslobysykkel.no",
   clientId: "beb/oslobysykkel-visualizer",
-  googleApiKey: process.env.GOOGLE_API_KEY,
+  googleApiKey: process.env.GOOGLE_API_KEY || "<API-KEY>",
 };
 
 fs.writeFileSync("./src/config.json", JSON.stringify(config));

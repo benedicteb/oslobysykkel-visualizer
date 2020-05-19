@@ -22,7 +22,7 @@
     "build": "npm run generate:config && react-scripts build",
     "test": "jest --collect-coverage",
     "eject": "react-scripts eject",
-    "generate:config": "ts-node --files src/generateConfig.ts"
+    "generate:config": "ts-node --files scripts/generateConfig.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
