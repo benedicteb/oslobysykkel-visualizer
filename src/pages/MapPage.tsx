@@ -37,17 +37,19 @@ const MapPage = () => {
         <p>Laster...</p>
       ) : (
         <div>
-          <p>
+          <p style={{ padding: "10px 0" }}>
             Tallet på hver markør sier hvor mange ledige sykler det er på
             stasjonen akkurat nå.
           </p>
 
-          <p>Klikk på en markør for å se mer detaljert status for stasjonen.</p>
+          <p style={{ padding: "10px 0" }}>
+            Klikk på en markør for å se mer detaljert status for stasjonen.
+          </p>
 
           <GoogleMap
             zoom={15}
             center={{ lat: 59.911491, lng: 10.757933 }}
-            mapContainerStyle={{ width: "1000px", height: "1000px" }}
+            mapContainerStyle={{ width: "100%", height: "600px" }}
           >
             {stations?.data.stations.map((station) => (
               <Marker
