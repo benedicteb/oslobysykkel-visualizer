@@ -5,9 +5,9 @@ const makeGETRequest = (file: string) => {
     method: "GET",
     headers: {
       "Client-Identifier": config.clientId,
-      Accept: "application/json"
-    }
-  }).then(response => {
+      Accept: "application/json",
+    },
+  }).then((response) => {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
@@ -18,13 +18,13 @@ const makeGETRequest = (file: string) => {
 
 const fetchStations = () => {
   return makeGETRequest("station_information.json").then(
-    json => json as StationInformationList
+    (json) => json as StationInformationList
   );
 };
 
 const fetchAvailability = () => {
   return makeGETRequest("station_status.json").then(
-    json => json as StationStatusList
+    (json) => json as StationStatusList
   );
 };
 
