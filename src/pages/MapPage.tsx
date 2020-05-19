@@ -36,27 +36,36 @@ const MapPage = () => {
       {!isLoaded || stationStatuses === undefined || stations === undefined ? (
         <p>Laster...</p>
       ) : (
-        <GoogleMap
-          zoom={15}
-          center={{ lat: 59.911491, lng: 10.757933 }}
-          mapContainerStyle={{ width: "1000px", height: "1000px" }}
-        >
-          {stations?.data.stations.map((station) => (
-            <Marker
-              key={station.station_id}
-              label={`${
-                stationStatuses?.data.stations.find(
-                  (stationStatus) =>
-                    stationStatus.station_id === station.station_id
-                )?.num_bikes_available
-              }`}
-              position={{ lat: station.lat, lng: station.lon }}
-              onClick={() => {
-                history.push(`/station/${station.station_id}`);
-              }}
-            />
-          ))}
-        </GoogleMap>
+        <div>
+          <p>
+            Tallet på hver markør sier hvor mange ledige sykler det er på
+            stasjonen akkurat nå.
+          </p>
+
+          <p>Klikk på en markør for å se mer detaljert status for stasjonen.</p>
+
+          <GoogleMap
+            zoom={15}
+            center={{ lat: 59.911491, lng: 10.757933 }}
+            mapContainerStyle={{ width: "1000px", height: "1000px" }}
+          >
+            {stations?.data.stations.map((station) => (
+              <Marker
+                key={station.station_id}
+                label={`${
+                  stationStatuses?.data.stations.find(
+                    (stationStatus) =>
+                      stationStatus.station_id === station.station_id
+                  )?.num_bikes_available
+                }`}
+                position={{ lat: station.lat, lng: station.lon }}
+                onClick={() => {
+                  history.push(`/station/${station.station_id}`);
+                }}
+              />
+            ))}
+          </GoogleMap>
+        </div>
       )}
     </Layout>
   );
