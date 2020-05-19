@@ -1,4 +1,4 @@
-import { byStationName } from "../../sortFunctions";
+import { byStationName } from "../sortFunctions";
 
 test("sort a premade station list alphabetically and verify result", () => {
   const stationList: StationInformation[] = [
