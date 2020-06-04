@@ -1,4 +1,4 @@
-# oslobysykkl-viz
+# oslobysykkel-viz
 
 Simple webapp for checking for available public bikes in Oslo.
 
